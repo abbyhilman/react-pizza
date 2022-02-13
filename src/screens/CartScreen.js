@@ -1,4 +1,5 @@
 import React from "react";
+import AOS from "aos";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, deleteCart } from "../actions/cartActions";
 import PlusIcon from "@material-ui/icons/Add";
@@ -7,6 +8,7 @@ import TrashIcon from "@material-ui/icons/Delete";
 import Checkout from "../components/Checkout";
 
 export default function CartScreen() {
+  AOS.init();
   const dispatch = useDispatch();
   const cartState = useSelector((state) => state.cartReducer);
   const cartItems = cartState.cartItems;
@@ -22,7 +24,7 @@ export default function CartScreen() {
 
   return (
     <div>
-      <div className="row justify-content-center">
+      <div className="row justify-content-center p-3" data-aos="fade-down">
         <div className="col-md-6">
           <h2 style={{ fontSize: "40px" }}>My Cart</h2>
           <hr />

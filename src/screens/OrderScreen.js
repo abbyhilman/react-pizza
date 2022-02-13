@@ -1,3 +1,4 @@
+import AOS from "aos";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Error from "../components/Error";
@@ -6,6 +7,9 @@ import Success from "../components/Success";
 import { getAllOrders } from "../actions/orderActions";
 
 export default function OrderScreen() {
+  AOS.init({
+    duration: 2800,
+  });
   const dispatch = useDispatch();
   const orderState = useSelector((state) => state.getAllOrdersReducers);
   const { error, loading, orders } = orderState;
@@ -32,7 +36,10 @@ export default function OrderScreen() {
         {orders &&
           orders.map((item) => {
             return (
-              <div className="col-md-8 shadow-lg p-3 mb-5 bg-body rounded m-2 p-1">
+              <div
+                className="col-md-8 shadow-lg p-3 mb-5 bg-body rounded m-2 p-1"
+                data-aos="fade-down"
+              >
                 <div className="d-flex">
                   <div className="text-start w-100 m-1">
                     <h2 style={{ fontSize: "25px" }}>Items</h2>

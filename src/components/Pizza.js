@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import AOS from "aos";
 import { Modal } from "react-bootstrap";
 import { addToCart } from "../actions/cartActions";
 
 export default function Pizza({ pizza }) {
+  AOS.init();
   const [quantity, setQuantity] = useState(1);
   const [varient, setVarient] = useState("small");
   const [show, setShow] = useState(false);
@@ -25,7 +27,7 @@ export default function Pizza({ pizza }) {
     }).format(money);
   };
   return (
-    <div className="shadow-lg p-3 mb-5 bg-white rounded">
+    <div className="shadow-lg p-3 mb-5 bg-white rounded" data-aos="zoom-in">
       <div onClick={() => handleShow()}>
         <h1>{pizza.name}</h1>
         <img
